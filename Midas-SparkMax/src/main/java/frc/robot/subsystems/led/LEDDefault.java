@@ -17,11 +17,11 @@ public class LEDDefault extends CommandBase {
   /** Creates a new LEDDefault. */
   LEDSubsystem m_led;
   ClawSubsytem m_claw;
-  CubeShooterSubsystem m_shooter;
-  public LEDDefault(LEDSubsystem led, ClawSubsytem claw, CubeShooterSubsystem shooter) {
+  //CubeShooterSubsystem m_shooter;
+  public LEDDefault(LEDSubsystem led, ClawSubsytem claw/*CubeShooterSubsystem shooter*/) {
     m_led = led;
     m_claw = claw;
-    m_shooter = shooter;
+    //m_shooter = shooter;
     addRequirements(m_led);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -46,7 +46,8 @@ public class LEDDefault extends CommandBase {
     if(DriverStation.isDisabled()){
       m_led.setTexasMode();
     }
-    else if(m_claw.getClawCurrent()>=ClawConstants.CLAW_SPIKE_CURRENT || m_shooter.shooterCurrent()>5.0){
+    else if(m_claw.getClawCurrent()>=ClawConstants.CLAW_SPIKE_CURRENT){
+    //|| m_shooter.shooterCurrent()>5.0){
       m_led.setColor(255, 0, 0);
     }
     
