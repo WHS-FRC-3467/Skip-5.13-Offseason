@@ -59,7 +59,7 @@ public class RobotContainer {
   private final ClawSubsytem m_claw = new ClawSubsytem();
   //private final LimelightSubsystem m_limelight = new LimelightSubsystem();
   private final LEDSubsystem m_led = new LEDSubsystem();
-  private final CubeShooterSubsystem m_shooter = new CubeShooterSubsystem();
+  //private final CubeShooterSubsystem m_shooter = new CubeShooterSubsystem();
   private SendableChooser<Command> m_autoChooser = new SendableChooser<>();
   
   // private final PoseEstimatorSubsystem m_EstimatorSubsystem = new PoseEstimatorSubsystem(m_limelight, m_drive);
@@ -84,7 +84,7 @@ public class RobotContainer {
     m_autoChooser.addOption("Over bump two piece", new OverBumpTwoPiece(m_drive, m_arm, m_claw));
     m_autoChooser.addOption("Two and a Half", new TwoHalfPiece(m_drive, m_arm, m_claw));
     m_autoChooser.addOption("Three Piece", new ThreePiece(m_drive, m_arm, m_claw));
-    m_autoChooser.addOption("Cuby Three Piece", new ThreePieceCuby(m_arm, m_drive, m_claw, m_shooter));
+    //m_autoChooser.addOption("Cuby Three Piece", new ThreePieceCuby(m_arm, m_drive, m_claw, m_shooter));
     m_autoChooser.addOption("No Auto", null);
     SmartDashboard.putData("Auto", m_autoChooser);
     
@@ -112,10 +112,10 @@ public class RobotContainer {
     m_claw.setDefaultCommand(new ClawDefault(m_claw, ()-> m_operatorController.getLeftTriggerAxis(), 
                                             () -> m_operatorController.getRightTriggerAxis()));
 
-    m_led.setDefaultCommand(new LEDDefault(m_led, m_claw, m_shooter));
+    m_led.setDefaultCommand(new LEDDefault(m_led, m_claw));
 
-    m_shooter.setDefaultCommand(new Shoot(m_shooter, 
-                                          ()-> m_driverController.getRightTriggerAxis()));
+    // m_shooter.setDefaultCommand(new Shoot(m_shooter, 
+    //                                       ()-> m_driverController.getRightTriggerAxis()));
 
     SmartDashboard.putData("Reset Modules", new InstantCommand(m_drive::resetModulesToAbsolute));
   }
@@ -157,10 +157,10 @@ public class RobotContainer {
 
     m_operatorController.x().onTrue(Commands.runOnce(() -> m_arm.updateAllSetpoints(ArmSetpoints.SUBSTATION)));
 
-    m_operatorController.povRight().whileTrue(Commands.run(()-> m_shooter.shoot(-0.4), m_shooter));
-    m_operatorController.povLeft().whileTrue(Commands.run(()-> m_shooter.shoot(0.3), m_shooter));
-    m_operatorController.povUp().whileTrue(Commands.run(()-> m_shooter.shoot(-0.9), m_shooter));
-    m_operatorController.povDown().whileTrue(Commands.run(()-> m_shooter.shoot(-0.15), m_shooter));
+    // m_operatorController.povRight().whileTrue(Commands.run(()-> m_shooter.shoot(-0.4), m_shooter));
+    // m_operatorController.povLeft().whileTrue(Commands.run(()-> m_shooter.shoot(0.3), m_shooter));
+    // m_operatorController.povUp().whileTrue(Commands.run(()-> m_shooter.shoot(-0.9), m_shooter));
+    // m_operatorController.povDown().whileTrue(Commands.run(()-> m_shooter.shoot(-0.15), m_shooter));
   }
 
  
