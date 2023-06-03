@@ -35,18 +35,17 @@ public final class Constants {
   public static final class OffsetConstants{
     //Module Offsets
     //Mod 0
-    public static final double MOD_0_OFFSET = 221.7;
+    public static final double MOD_0_OFFSET = 290.7;
     //Mod 1
-    public static final double MOD_1_OFFSET = 186.9;
+    public static final double MOD_1_OFFSET = 74.4;
     //Mod 2
-    public static final double MOD_2_OFFSET = 81.5;
+    public static final double MOD_2_OFFSET = 286.2;
     //Mod 3
-    public static final double MOD_3_OFFSET = 178.4;
+    public static final double MOD_3_OFFSET = 209.0;
 
     //Arm Offsets
-    public static final double UPPER_JOINT_OFFSET = 178.4;
-    public static final double LOWER_JOINT_OFFSET = 178.4;
-
+    public static final double UPPER_JOINT_OFFSET = 58.7;
+    public static final double LOWER_JOINT_OFFSET = 168.9;
   }
 
   public static final class CanConstants{
@@ -308,6 +307,9 @@ public final class Constants {
   }
 
   public static final class ArmSetpoints{
+    // = new Setpoint(Lower Cone, Upper Cone, Wrist State Cone, Claw State Cone, Lower Cube, Upper Cube, Wrist State Cube, Claw State Cube)
+    //Higher values for lower joint = closer to pdh, Lower values = cubey
+    //Higher values for upper joint = closer to cubey, Lower values = close to pdh
     public static final Setpoint TEST_SETPOINT_HIGHER = new Setpoint(191, 35, true, ClawState.IN, 191, 35, true, ClawState.OUT, ArmState.OTHER);
     public static final Setpoint TEST_SETPOINT_LOWER = new Setpoint(164, 65, true, ClawState.IN, 164, 65, true, ClawState.OUT, ArmState.OTHER);
 
@@ -320,7 +322,7 @@ public final class Constants {
     public static final Setpoint TOP_NODE = new Setpoint(220, 154, false, ClawState.IN, 198, 118, false, ClawState.OUT, ArmState.TOP_NODE);
     public static final Setpoint TOP_NODE_PLACED = new Setpoint(219, 140, false, ClawState.IN, 211, 118, false, ClawState.OUT, ArmState.TOP_NODE_PLACED);
     public static final Setpoint TOP_NODE_PLACED_AND_OPEN = new Setpoint(219, 140, false, ClawState.OUT, 213, 115, false, ClawState.OUT, ArmState.TOP_NODE_PLACED);
-    public static final Setpoint SUBSTATION = new Setpoint(160, 63.5, false, ClawState.IN, 160, 63.5, false, ClawState.OUT, ArmState.SUBSTATION);
+    public static final Setpoint SUBSTATION = new Setpoint(160, 65.5, false, ClawState.IN, 160, 66, false, ClawState.OUT, ArmState.SUBSTATION);
     public static final Setpoint FLOOR_HOVER = new Setpoint(190, 45, false, ClawState.IN, 188, 45, false, ClawState.OUT, ArmState.OTHER);
     public static final Setpoint FLOOR_INTAKING = new Setpoint(216, 37, false, ClawState.IN, 218, 45, false, ClawState.OUT, ArmState.FLOOR);
     
