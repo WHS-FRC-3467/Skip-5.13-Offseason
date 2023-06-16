@@ -35,17 +35,17 @@ public final class Constants {
   public static final class OffsetConstants{
     //Module Offsets
     //Mod 0
-    public static final double MOD_0_OFFSET = 221.7;
+    public static final double MOD_0_OFFSET = 220.5;
     //Mod 1
-    public static final double MOD_1_OFFSET = 186.9;
+    public static final double MOD_1_OFFSET = 187.8;
     //Mod 2
-    public static final double MOD_2_OFFSET = 81.5;
+    public static final double MOD_2_OFFSET = 83.0;
     //Mod 3
     public static final double MOD_3_OFFSET = 178.4;
 
     //Arm Offsets
-    public static final double UPPER_JOINT_OFFSET = 178.4;
-    public static final double LOWER_JOINT_OFFSET = 178.4;
+    public static final double UPPER_JOINT_OFFSET = 12.6;
+    public static final double LOWER_JOINT_OFFSET = 179.5;
 
   }
 

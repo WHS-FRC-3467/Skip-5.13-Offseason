@@ -8,9 +8,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 import frc.robot.Constants.CanConstants;
 
 public class ClawSubsytem extends SubsystemBase {
@@ -28,9 +26,9 @@ public class ClawSubsytem extends SubsystemBase {
   
   @Override
   public void periodic() {
-    if(Constants.tuningMode){
-      SmartDashboard.putNumber("Claw Current", getClawCurrent());
-    }
+    // if(Constants.tuningMode){
+    //   SmartDashboard.putNumber("Claw Current", getClawCurrent());
+    // }
     // This method will be called once per scheduler run
   }
   public void driveClaw(double speed){
