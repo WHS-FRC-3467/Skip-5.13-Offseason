@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Constants.ClawConstants;
 import frc.robot.subsystems.claw.ClawSubsytem;
-import frc.robot.subsystems.cubeShooter.CubeShooterSubsystem;
 import frc.robot.util.GamePiece;
 import frc.robot.util.GamePiece.GamePieceType;
 
@@ -17,11 +16,10 @@ public class LEDDefault extends CommandBase {
   /** Creates a new LEDDefault. */
   LEDSubsystem m_led;
   ClawSubsytem m_claw;
-  CubeShooterSubsystem m_shooter;
-  public LEDDefault(LEDSubsystem led, ClawSubsytem claw, CubeShooterSubsystem shooter) {
+  // CubeShooterSubsystem m_shooter;
+  public LEDDefault(LEDSubsystem led, ClawSubsytem claw) {
     m_led = led;
     m_claw = claw;
-    m_shooter = shooter;
     addRequirements(m_led);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -46,7 +44,7 @@ public class LEDDefault extends CommandBase {
     if(DriverStation.isDisabled()){
       m_led.setTexasMode();
     }
-    else if(m_claw.getClawCurrent()>=ClawConstants.CLAW_SPIKE_CURRENT || m_shooter.shooterCurrent()>5.0){
+    else if(m_claw.getClawCurrent()>=ClawConstants.CLAW_SPIKE_CURRENT){
       m_led.setColor(255, 0, 0);
     }
     

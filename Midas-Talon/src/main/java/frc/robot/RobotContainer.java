@@ -14,15 +14,12 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.claw.ClawDefault;
 import frc.robot.subsystems.claw.ClawSubsytem;
-import frc.robot.subsystems.cubeShooter.CubeShooterSubsystem;
-import frc.robot.subsystems.cubeShooter.Shoot;
 import frc.robot.Constants.ArmSetpoints;
 import frc.robot.auto.OneConeChargeWithCubePickup;
 import frc.robot.auto.OneConeChargeWithMobility;
 import frc.robot.auto.OneConeWithCharge;
 import frc.robot.auto.OverBumpTwoPiece;
 import frc.robot.auto.ThreePiece;
-import frc.robot.auto.ThreePieceCuby;
 import frc.robot.auto.TwoHalfPiece;
 import frc.robot.auto.TwoPiece;
 import frc.robot.auto.TwoPieceWithCharge;
@@ -59,7 +56,6 @@ public class RobotContainer {
   private final ClawSubsytem m_claw = new ClawSubsytem();
   //private final LimelightSubsystem m_limelight = new LimelightSubsystem();
   private final LEDSubsystem m_led = new LEDSubsystem();
-  private final CubeShooterSubsystem m_shooter = new CubeShooterSubsystem();
   private SendableChooser<Command> m_autoChooser = new SendableChooser<>();
   
   // private final PoseEstimatorSubsystem m_EstimatorSubsystem = new PoseEstimatorSubsystem(m_limelight, m_drive);
@@ -84,7 +80,6 @@ public class RobotContainer {
     m_autoChooser.addOption("Over bump two piece", new OverBumpTwoPiece(m_drive, m_arm, m_claw));
     m_autoChooser.addOption("Two and a Half", new TwoHalfPiece(m_drive, m_arm, m_claw));
     m_autoChooser.addOption("Three Piece", new ThreePiece(m_drive, m_arm, m_claw));
-    m_autoChooser.addOption("Cuby Three Piece", new ThreePieceCuby(m_arm, m_drive, m_claw, m_shooter));
     m_autoChooser.addOption("No Auto", null);
     SmartDashboard.putData("Auto", m_autoChooser);
     
@@ -112,10 +107,7 @@ public class RobotContainer {
     m_claw.setDefaultCommand(new ClawDefault(m_claw, ()-> m_operatorController.getLeftTriggerAxis(), 
                                             () -> m_operatorController.getRightTriggerAxis()));
 
-    m_led.setDefaultCommand(new LEDDefault(m_led, m_claw, m_shooter));
-
-    m_shooter.setDefaultCommand(new Shoot(m_shooter, 
-                                          ()-> m_driverController.getRightTriggerAxis()));
+    m_led.setDefaultCommand(new LEDDefault(m_led, m_claw));
 
     SmartDashboard.putData("Reset Modules", new InstantCommand(m_drive::resetModulesToAbsolute));
   }
@@ -156,11 +148,6 @@ public class RobotContainer {
     m_operatorController.y().onTrue(new GoToPositionWithIntermediate(m_arm, ArmSetpoints.TOP_NODE));
 
     m_operatorController.x().onTrue(Commands.runOnce(() -> m_arm.updateAllSetpoints(ArmSetpoints.SUBSTATION)));
-
-    m_operatorController.povRight().whileTrue(Commands.run(()-> m_shooter.shoot(-0.4), m_shooter));
-    m_operatorController.povLeft().whileTrue(Commands.run(()-> m_shooter.shoot(0.3), m_shooter));
-    m_operatorController.povUp().whileTrue(Commands.run(()-> m_shooter.shoot(-0.9), m_shooter));
-    m_operatorController.povDown().whileTrue(Commands.run(()-> m_shooter.shoot(-0.15), m_shooter));
   }
 
  
