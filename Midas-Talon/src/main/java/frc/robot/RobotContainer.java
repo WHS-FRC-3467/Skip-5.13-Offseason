@@ -15,14 +15,10 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.claw.ClawDefault;
 import frc.robot.subsystems.claw.ClawSubsytem;
 import frc.robot.Constants.ArmSetpoints;
-import frc.robot.auto.OneConeChargeWithCubePickup;
 import frc.robot.auto.OneConeChargeWithMobility;
 import frc.robot.auto.OneConeWithCharge;
 import frc.robot.auto.OverBumpTwoPiece;
-import frc.robot.auto.ThreePiece;
-import frc.robot.auto.TwoHalfPiece;
 import frc.robot.auto.TwoPiece;
-import frc.robot.auto.TwoPieceWithCharge;
 import frc.robot.subsystems.arm.ArmDefault;
 import frc.robot.subsystems.arm.ArmSubsystem;
 import frc.robot.subsystems.arm.GoToMidNode;
@@ -74,12 +70,8 @@ public class RobotContainer {
     
     m_autoChooser.addOption("Charge and no mobility", new OneConeWithCharge(m_drive, m_arm, m_claw));
     m_autoChooser.addOption("Charge and mobility", new OneConeChargeWithMobility(m_drive, m_arm, m_claw));
-    m_autoChooser.addOption("Charge with cube pickup", new OneConeChargeWithCubePickup(m_drive, m_arm, m_claw));
     m_autoChooser.addOption("Two Game Piece", new TwoPiece(m_drive, m_arm, m_claw));
-    m_autoChooser.addOption("Two piece with charge", new TwoPieceWithCharge(m_drive, m_arm, m_claw));
     m_autoChooser.addOption("Over bump two piece", new OverBumpTwoPiece(m_drive, m_arm, m_claw));
-    m_autoChooser.addOption("Two and a Half", new TwoHalfPiece(m_drive, m_arm, m_claw));
-    m_autoChooser.addOption("Three Piece", new ThreePiece(m_drive, m_arm, m_claw));
     m_autoChooser.addOption("No Auto", null);
     SmartDashboard.putData("Auto", m_autoChooser);
     
