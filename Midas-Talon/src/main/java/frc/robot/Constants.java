@@ -294,11 +294,11 @@ public final class Constants {
     public final static int TIMEOUT = 10;
 
     // Profiled PID Constants For Midas
-    public static final double LOWER_CRUISE = 200.0;
-    public static final double LOWER_ACCELERATION = 200.0;
+    public static final double LOWER_CRUISE = 100.0;
+    public static final double LOWER_ACCELERATION = 100.0;
 
-    public static final double UPPER_CRUISE = 200.0;
-    public static final double UPPER_ACCELERATION = 200.0;
+    public static final double UPPER_CRUISE = 100.0;
+    public static final double UPPER_ACCELERATION = 100.0;
 
     //Duty cycle constants
     public static final double DUTY_CYCLE_MIN = 1.0/1025.0;
